@@ -16,11 +16,11 @@ class AuthController extends Controller
     }
 
     public function loginform(){
-        return view('backend.auth.login');
+        return view('auth.login');
     }
 
     public function registerform(){
-        return view('backend.auth.register');
+        return view('auth.register');
     }
 
     public function login(AuthRequest $request){
@@ -50,5 +50,11 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('auth.loginform')->with('error', 'Đăng ký thành công thành công');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('homepage.index');
     }
 }

@@ -10,3 +10,16 @@
     color: red;
     font-size: 12px;
 }
+
+.custom-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Thêm hiệu ứng cho hover */
+.navbar-nav .nav-link:hover {
+    color: #ffdd57 !important;
+}

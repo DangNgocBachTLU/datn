@@ -9,7 +9,6 @@
     <title>Đăng ký</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="backend/css/customize.css" rel="stylesheet">
@@ -83,19 +82,9 @@
         </div>
     </div>
 
-    <!-- Mainly scripts -->
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
-    </script>
+    <script src="backend/js/customize.js"></script>
 </body>
 
 </html>
