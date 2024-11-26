@@ -23,20 +23,23 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function login(AuthRequest $request){
-        $credentials = [
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
-        ];
-        if (Auth::attempt($credentials)) {
-            // $request->session()->regenerate();
- 
-            // return redirect()->intended('dashboard');
-            return redirect()->route('homepage.index')->with('success','Đăng nhập thành công');
+    public function login(AuthRequest $request)
+    {
+        $username = $request->input('username');
+        $password = $request->input('password');
+        
+        // Tìm người dùng với username phân biệt hoa và thường
+        $user = User::whereRaw('BINARY username = ?', [$username])->first();
+
+        if ($user && Hash::check($password, $user->password)) {
+            Auth::login($user);
+            $request->session()->regenerate();
+            return redirect()->route('homepage.index')->with('success', 'Đăng nhập thành công');
         }
-        else
-            return redirect()->route('auth.loginform')->with('error','Tài khoản hoặc mật khẩu không chính xác');
+
+        return redirect()->route('auth.loginform')->with('error', 'Tài khoản hoặc mật khẩu không chính xác');
     }
+
 
     public function register(AuthRequest $request)
     {

@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         {{-- trang chủ --}}
-        <a class="navbar-brand" href="\">Navbar</a>
+        <a class="navbar-brand" href="{{ route('homepage.index') }}">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +23,7 @@
                     <li class="nav-item dropdown custom-dropdown">
                         <a class="nav-link" href="#">Xin chào, {{ Auth::user()->name }}!</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item personal-information" href="#">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item personal-information" href="{{ route('account.profile') }}">Thông tin cá nhân</a></li>
                             <li><a class="dropdown-item test-history" href="#">Lịch sử làm bài</a></li>
                             <li>
                                 <form action="{{ route('auth.logout') }}" method="POST">
