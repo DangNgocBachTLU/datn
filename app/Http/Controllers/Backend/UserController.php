@@ -13,7 +13,7 @@ class UserController extends Controller
 
     }
 
-    public function profile()
+    public function index()
     {
         $user = Auth::user();
         return view('account.profile', compact('user'));

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->integer('score');
             $table->timestamps();
         });
-        Schema::table('e_questions', function (Blueprint $table) {
-            $table->dropColumn('updated_at');
-        });
+        // Schema::table('e_questions', function (Blueprint $table) {
+        //     $table->dropColumn('updated_at');
+        // });
     }
 
     /**

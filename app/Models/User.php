@@ -48,4 +48,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function testHistories()
+    {
+        return $this->hasMany(TestHistory::class, 'id_user');
+    }
 }
