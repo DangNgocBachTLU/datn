@@ -1,25 +1,8 @@
 @extends('main')
 
-@section('title', 'ấu dề')
+@section('title', 'Bài thi')
 
 @section('content')
-    {{-- <h2>{{ $test->name }}</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Câu hỏi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($questions as $key => $question)
-            <tr>
-                <td>{{ $key + 1 }}</td>
-                <td>{{ $question->question }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table> --}}
     
     <div  class="container">
         <div class="row" style="margin: 20px;">
@@ -27,7 +10,7 @@
                 <h2>{{ $test->name }}</h2>
             </div>
             <div class="table-responsive">
-                <form action="{{ route('test.submit') }}" method="POST">
+                <form action="{{ route('test.submit', ['id'=> $test->id]) }}" method="POST">
                     @csrf
                     <table class="table">
                         <td class="col-md-9">
@@ -37,29 +20,29 @@
                                                     <p>{{ $key + 1 }}. {{ $question->question }}</p>
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="answer_{{ $question->id }}" id="a">
-                                                        <label class="form-check-label" for="a">
+                                                        <input class="form-check-input" type="radio" name="answer_{{ $question->id }}" value="a" id="a_{{ $question->id }}">
+                                                        <label class="form-check-label" for="a_{{ $question->id }}">
                                                             {{ $question->a }}
                                                         </label>
                                                     </div>
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="answer_{{ $question->id }}" id="b">
-                                                        <label class="form-check-label" for="b">
+                                                        <input class="form-check-input" type="radio" name="answer_{{ $question->id }}" value="b" id="b_{{ $question->id }}">
+                                                        <label class="form-check-label" for="b_{{ $question->id }}">
                                                             {{ $question->b }}
                                                         </label>
                                                     </div>
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="answer_{{ $question->id }}" id="c">
-                                                        <label class="form-check-label" for="c">
+                                                        <input class="form-check-input" type="radio" name="answer_{{ $question->id }}" value="c" id="c_{{ $question->id }}">
+                                                        <label class="form-check-label" for="c_{{ $question->id }}">
                                                             {{ $question->c }}
                                                         </label>
                                                     </div>
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="answer_{{ $question->id }}" id="d">
-                                                        <label class="form-check-label" for="d">
+                                                        <input class="form-check-input" type="radio" name="answer_{{ $question->id }}" value="d" id="d_{{ $question->id }}">
+                                                        <label class="form-check-label" for="d_{{ $question->id }}">
                                                             {{ $question->d }}
                                                         </label>
                                                     </div>
@@ -69,10 +52,11 @@
                                     @endforeach
                         </td>
                         <td>
-                            <div class="card card-body">
-                                <p>ấu dề</p>
+                            <div class="card card-body mb-2 position-fixed text-center">
+                                <p>Thời gian còn lại</p>
+                                <p id="countdown-timer"></p>
+                                <button type="submit" class="btn btn-primary">Nộp bài</button>
                             </div>
-                            <button type="submit" class="btn btn-primary">Nộp bài</button>
                         </td>
                     </table>
                 </form>

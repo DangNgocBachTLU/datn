@@ -21,6 +21,8 @@ use \App\Http\Controllers\Backend\TestController;
 //     return view('welcome');
 // });
 
+Route::get('admin/', [AdminController::class, 'index'])->name('admin.index');
+
 Route::get('/', [HomepageController::class,'index'])->name('homepage.index');
 
 Route::get('loginform/', [AuthController::class, 'loginform'])->name('auth.loginform');
@@ -37,4 +39,6 @@ Route::put('update/', [UserController::class, 'update'])->name('account.update')
 
 Route::get('list/', [TestController::class, 'index'])->name('test.list');
 Route::get('practice/{id}/', [TestController::class, 'show'])->name('test.practice');
-Route::post('submit/', [TestController::class, 'submit'])->name('test.practice');
+Route::post('submit/{id}', [TestController::class, 'submit'])->name('test.submit');
+Route::get('history/', [TestController::class, 'history'])->name('test.history');
+Route::get('search/', [TestController::class, 'search'])->name('test.search');

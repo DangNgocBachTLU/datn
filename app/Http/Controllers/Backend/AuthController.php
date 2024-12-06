@@ -52,7 +52,7 @@ class AuthController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return redirect()->route('auth.loginform')->with('error', 'Đăng ký thành công thành công');
+        return redirect()->route('auth.loginform')->with('success', 'Đăng ký thành công');
     }
 
     public function logout()

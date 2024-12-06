@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Test;
 use Illuminate\Support\Facades\DB;
 use App\Models\EQuestion;
+use App\Models\TestHistory;
 
 class TestController extends Controller
 {
@@ -46,28 +47,43 @@ class TestController extends Controller
         return view('test.practice', compact('test', 'questions'));
     }
 
-    public function submit(Request $request){
-        $answers = $request->input('answers'); // Lấy dữ liệu từ form
-        $questionIds = array_keys($answers); // Lấy danh sách ID câu hỏi
-
-        // Lấy danh sách câu hỏi từ database
-        $questions = EQuestion::whereIn('id', $questionIds)->get();
-
-        $score = 0; // Điểm số ban đầu
-        $totalQuestions = count($questions); // Tổng số câu hỏi
+    public function submit(Request $request, $id)
+    {
+        $userId = auth()->id();
+        $questions = EQuestion::where('id_test', $id)->get();
+        $score = 0;
+        $numberQuestions = 0;
+        $totalQuestions = $questions->count();
 
         foreach ($questions as $question) {
-            // So sánh đáp án
-            if (isset($answers[$question->id]) && $answers[$question->id] === $question->correct_answer) {
-                $score++; // Tăng điểm nếu đúng
+            $answerKey = 'answer_' . $question->id;
+            if ($request->has($answerKey) && $request->input($answerKey) === $question->correct_answer) {
+                $score += 2;
+                $numberQuestions++;
             }
         }
-
-        // Trả về kết quả
-        return view('test.result', [
+        DB::table('test_history')->insert([
+            'id_user' => $userId,
+            'id_test' => $id,
             'score' => $score,
-            'totalQuestions' => $totalQuestions,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
+
+        return view('test.result', compact('score', 'numberQuestions', 'totalQuestions', 'id'));
+    }
+
+    public function history(){
+        $userId = auth()->id();
+        $history = TestHistory::with('test')->where('id_user', $userId)->get();
+        return view('test.history', compact('history'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $tests = Test::where('name', 'like', '%'.$search.'%')->get();
+        return view('test.search', compact('tests'));
     }
 
     /**
