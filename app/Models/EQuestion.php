@@ -9,7 +9,7 @@ class EQuestion extends Model
 {
     use HasFactory;
     protected $table = "e_questions";
-    protected $fillable = ['question', 'a', 'b', 'c', 'd','correct_answer', 'id_test'];
+    protected $fillable = ['question', 'a', 'b', 'c', 'd','correct_answer', 'level', 'id_test'];
 
     public function test()
     {

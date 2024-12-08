@@ -9,7 +9,7 @@
             <div class="card-header">
                 <h2>Chỉnh sửa thông tin</h2>
             </div>
-            <form action="{{ route('account.update') }}" method="POST">
+            <form action="{{ route('user.account.update') }}" method="POST">
                 @csrf
                 @method('PUT')
             
@@ -48,7 +48,7 @@
                             <td><label style="font-size: xx-small">(*):Không thể thay đổi thông tin</label></td>
                             <td>
                                 <button type="submit" class="btn btn-success">Cập nhật</button>
-                                <a href="{{ route('account.profile') }}" class="btn btn-danger">Hủy</a>
+                                <a href="{{ route('user.account.profile') }}" class="btn btn-danger">Hủy</a>
                             </td>                                  
                         </tr>
                     </table>

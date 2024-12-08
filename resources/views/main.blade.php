@@ -6,14 +6,11 @@
 
     <title> @yield('title') </title>
 
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/css/customize.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
-
+    @include('header')
 </head>
 
 <body >
-    @include('header')
+    @include('head')
 
     @yield('content')
 

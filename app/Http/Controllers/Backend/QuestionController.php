@@ -3,33 +3,18 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
+use App\Models\EQuestion;
 
-class AdminController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.login');
-    }
-
-    public function login(AuthRequest $request)
-    {
-        $username = $request->input('username');
-        $password = $request->input('password');
-        
-        if ($username=='admin' && $password=='admin') {
-            $request->session()->regenerate();
-            return redirect()->route('admin.dashboard')->with('success', 'Đăng nhập thành công');;
-        }
-        return redirect()->route('admin.index')->with('error', 'Tài khoản hoặc mật khẩu không chính xác');;
-    }
-
-    public function dashboard(){
-        return view('admin.dashboard');
+        $questions = EQuestion::orderBy('id', 'desc')->paginate(15);
+        return view('admin.question.list', compact('questions'));
     }
 
     /**
@@ -37,7 +22,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.question.create');
     }
 
     /**
@@ -45,7 +30,8 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        EQuestion::create($request->all());
+        return redirect()->route('admin.question.list')->with('success', 'Thêm thành công');
     }
 
     /**
@@ -61,7 +47,8 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $question = EQuestion::find($id);
+        return view('admin.question.edit', compact('question'));
     }
 
     /**
@@ -69,7 +56,9 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $question = EQuestion::find($id);
+        $question->update($request->all());
+        return redirect()->route('admin.question.list')->with('success', 'Cập nhật thành công');
     }
 
     /**

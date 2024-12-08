@@ -34,7 +34,7 @@
                         <tr>
                             <th></th>
                             <td>
-                                <a href="{{ route('account.edit', $user->id) }}" class="btn btn-success">chỉnh sửa thông tin</a>
+                                <a href="{{ route('user.account.edit', $user->id) }}" class="btn btn-success">chỉnh sửa thông tin</a>
                             </td>
                         </tr>
                     </table>

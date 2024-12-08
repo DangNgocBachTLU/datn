@@ -17,7 +17,7 @@ class TestController extends Controller
     public function index()
     {
         $test = Test::get();
-        return view('test.list', compact('test'));
+        return view('user.test.list', compact('test'));
     }
 
     /**
@@ -44,7 +44,7 @@ class TestController extends Controller
         $test = Test::find($id);
         $questions = $test->questions;
 
-        return view('test.practice', compact('test', 'questions'));
+        return view('user.test.practice', compact('test', 'questions'));
     }
 
     public function submit(Request $request, $id)
@@ -70,20 +70,20 @@ class TestController extends Controller
             'updated_at' => now(),
         ]);
 
-        return view('test.result', compact('score', 'numberQuestions', 'totalQuestions', 'id'));
+        return view('user.test.result', compact('score', 'numberQuestions', 'totalQuestions', 'id'));
     }
 
     public function history(){
         $userId = auth()->id();
         $history = TestHistory::with('test')->where('id_user', $userId)->get();
-        return view('test.history', compact('history'));
+        return view('user.test.history', compact('history'));
     }
 
     public function search(Request $request)
     {
         $search = $request->input('search');
         $tests = Test::where('name', 'like', '%'.$search.'%')->get();
-        return view('test.search', compact('tests'));
+        return view('user.test.search', compact('tests'));
     }
 
     /**

@@ -8,10 +8,10 @@
 
     <title>Đăng nhập</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="backend/css/customize.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/css/customize.css') }}" rel="stylesheet">
 
 </head>
 
@@ -21,7 +21,7 @@
         <div>
             <h3>Xin chào</h3>
             <p>Đăng nhập ngay để bắt đầu trải nghiệm luyện thi tiếng Anh hiệu quả mỗi ngày.</p>
-            <form method="post" class="m-t" role="form" action=" {{ route('auth.login') }} ">
+            <form method="post" class="m-t" role="form" action=" {{ route('user.auth.login') }} ">
                 @csrf
 
                 <div class="form-group">
@@ -48,13 +48,13 @@
 
                 <a href="#"><small>Quên mật khẩu?</small></a>
                 <p class="text-muted text-center"><small>Bạn chưa có tài khoản?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href=" {{ route('auth.registerform') }} ">Đăng ký ngay</a>
+                <a class="btn btn-sm btn-white btn-block" href=" {{ route('user.auth.registerform') }} ">Đăng ký ngay</a>
             </form>
         </div>
     </div>
 
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 </body>
 

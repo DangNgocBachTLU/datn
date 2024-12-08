@@ -8,7 +8,7 @@
         <div class="row" style="margin: 20px;">
             <div class="col-12">
                 <div class="card-header">
-                    <h2>Thông tin cá nhân</h2>
+                    <h2>Lịch sử làm bài</h2>
                 </div>
                 <div class="table-responsive">
                     <table class="table">

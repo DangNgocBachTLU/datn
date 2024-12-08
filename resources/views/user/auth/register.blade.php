@@ -8,10 +8,10 @@
 
     <title>Đăng ký</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="backend/css/customize.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/css/customize.css') }}" rel="stylesheet">
 
 </head>
 
@@ -21,7 +21,7 @@
         <div>
             <h3>Đăng ký tài khoản</h3>
             <p>Đăng ký ngay để bắt đầu trải nghiệm luyện thi tiếng Anh hiệu quả mỗi ngày.</p>
-            <form method='post' class="m-t" role="form" action=" {{ route('auth.register') }} " novalidate>
+            <form method='post' class="m-t" role="form" action=" {{ route('user.auth.register') }} " novalidate>
                 @csrf
 
                 <div class="form-group">
@@ -77,14 +77,14 @@
                 <button type="submit" class="btn btn-primary block full-width m-b">Đăng ký</button>
 
                 <p class="text-muted text-center"><small>Đã có tài khoản?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href=" {{ route('auth.loginform')}} ">Đăng nhập</a>
+                <a class="btn btn-sm btn-white btn-block" href=" {{ route('user.auth.loginform')}} ">Đăng nhập</a>
             </form>
         </div>
     </div>
 
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="backend/js/i-check.js"></script>
+    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/js/i-check.js') }}"></script>
 </body>
 
 </html>

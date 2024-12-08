@@ -23,19 +23,25 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         $routeName = $this->route()->getName();
-        if($routeName === 'auth.login'){
+        if($routeName === 'user.auth.login'){
             return [
                 'username' => 'required|regex:/^[a-zA-Z0-9]*$/',
                 'password' => 'required',
             ];
         }
-        if($routeName === 'auth.register'){
+        if($routeName === 'user.auth.register'){
             return [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
                 'username' => 'required|regex:/^[a-zA-Z0-9]*$/',
                 'password' => 'required',
                 'terms' => 'required',
+            ];
+        }
+        if($routeName === 'admin.login'){
+            return [
+                'username' => 'required|regex:/^[a-zA-Z0-9]*$/',
+                'password' => 'required',
             ];
         }
     }

@@ -16,11 +16,11 @@ class AuthController extends Controller
     }
 
     public function loginform(){
-        return view('auth.login');
+        return view('user.auth.login');
     }
 
     public function registerform(){
-        return view('auth.register');
+        return view('user.auth.register');
     }
 
     public function login(AuthRequest $request)
@@ -34,10 +34,10 @@ class AuthController extends Controller
         if ($user && Hash::check($password, $user->password)) {
             Auth::login($user);
             $request->session()->regenerate();
-            return redirect()->route('homepage.index')->with('success', 'Đăng nhập thành công');
+            return redirect()->route('user.homepage.index')->with('success', 'Đăng nhập thành công');
         }
 
-        return redirect()->route('auth.loginform')->with('error', 'Tài khoản hoặc mật khẩu không chính xác');
+        return redirect()->route('user.auth.loginform')->with('error', 'Tài khoản hoặc mật khẩu không chính xác');
     }
 
 
@@ -52,12 +52,12 @@ class AuthController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return redirect()->route('auth.loginform')->with('success', 'Đăng ký thành công');
+        return redirect()->route('user.auth.loginform')->with('success', 'Đăng ký thành công');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('homepage.index');
+        return redirect()->route('user.homepage.index');
     }
 }
