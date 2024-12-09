@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('test_history', function (Blueprint $table) {
+        Schema::create('question_tests', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_test');
             $table->foreign('id_test')->references('id')->on('tests')->onDelete('cascade');
-            $table->unsignedInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('score');
-            $table->timestamps();
+            $table->unsignedInteger('id_question');
+            $table->foreign('id_question')->references('id')->on('e_questions')->onDelete('cascade');
+            // $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('test_history');
+        Schema::dropIfExists('question_tests');
     }
 };

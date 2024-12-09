@@ -11,8 +11,8 @@ class EQuestion extends Model
     protected $table = "e_questions";
     protected $fillable = ['question', 'a', 'b', 'c', 'd','correct_answer', 'level', 'id_test'];
 
-    public function test()
-    {
-        return $this->belongsTo(Test::class, 'id_test', 'id'); 
-    }
+    // public function tests()
+    // {
+    //     return $this->belongsToMany(Test::class, 'question_tests', 'id_question', 'id_test');
+    // }
 }

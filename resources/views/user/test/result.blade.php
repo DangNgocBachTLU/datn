@@ -10,7 +10,7 @@
                 <h2>Kết quả bài thi</h2>
             </div>
             <div class="container">
-                <p>Điểm số: {{ $score }}/{{ $totalQuestions*2 }}</p>
+                <p>Điểm số: {{ $numberQuestions*2 }}/{{ $totalQuestions*2 }}</p>
                 <p>Số câu trả lời đúng: {{ $numberQuestions }}/{{ $totalQuestions }}</p>
                 <a href="{{ route('user.test.practice', ['id' => $id]) }}" class="btn btn-primary">Làm lại</a>
                 <a href="{{ route('user.test.list') }}" class="btn btn-success">Thoát</a>

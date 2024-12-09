@@ -20,9 +20,6 @@ return new class extends Migration
             $table->string('d', 255);
             $table->enum('correct_answer', ['a', 'b', 'c', 'd']);
             $table->enum('level', ['Dễ', 'Trung bình', 'Khó'])->nullable();
-            $table->unsignedInteger('id_test');
-            // Thiết lập ràng buộc khóa ngoại
-            $table->foreign('id_test')->references('id')->on('tests')->onDelete('cascade');
             $table->timestamps();
         });
     }

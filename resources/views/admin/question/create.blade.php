@@ -49,7 +49,7 @@
                                 <th><label for="level">Độ khó:</label></th>
                                 <td><select id="level" name="level" required>
                                     <option value=""></option>
-                                    <option value="Dề">Dễ</option>
+                                    <option value="Dễ">Dễ</option>
                                     <option value="Trung bình">Trung bình</option>
                                     <option value="Khó">Khó</option>
                                 </select></td>

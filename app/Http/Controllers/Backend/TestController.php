@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\EQuestion;
 use App\Models\TestHistory;
 use Illuminate\Support\Facades\Route;
+use App\Models\QuestionTest;
 
 class TestController extends Controller
 {
@@ -39,7 +40,47 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $test = Test::create($request->all());
+
+        switch ($request->level) {
+            case 'Dễ':
+                $easyQuestions = EQuestion::where('level', 'Dễ')->inRandomOrder()->limit(30)->pluck('id');
+                $mediumQuestions = EQuestion::where('level', 'Trung bình')->inRandomOrder()->limit(20)->pluck('id');
+                break;
+    
+            case 'Trung bình':
+                $easyQuestions = EQuestion::where('level', 'Dễ')->inRandomOrder()->limit(25)->pluck('id');
+                $mediumQuestions = EQuestion::where('level', 'Trung bình')->inRandomOrder()->limit(20)->pluck('id');
+                $hardQuestions = EQuestion::where('level', 'Khó')->inRandomOrder()->limit(5)->pluck('id');
+                break;
+    
+            case 'Khó':
+                $easyQuestions = EQuestion::where('level', 'Dễ')->inRandomOrder()->limit(20)->pluck('id');
+                $mediumQuestions = EQuestion::where('level', 'Trung bình')->inRandomOrder()->limit(20)->pluck('id');
+                $hardQuestions = EQuestion::where('level', 'Khó')->inRandomOrder()->limit(10)->pluck('id');
+                break;
+        }
+    
+        // Kết hợp các câu hỏi theo độ khó
+        $allQuestions = collect();
+        if (isset($easyQuestions)) {
+            $allQuestions = $allQuestions->merge($easyQuestions);
+        }
+        if (isset($mediumQuestions)) {
+            $allQuestions = $allQuestions->merge($mediumQuestions);
+        }
+        if (isset($hardQuestions)) {
+            $allQuestions = $allQuestions->merge($hardQuestions);
+        }
+    
+        foreach ($allQuestions as $questionId) {
+            QuestionTest::create([
+                'id_test' => $test->id,
+                'id_question' => $questionId,
+            ]);
+        }
+    
+        return redirect()->route('admin.test.list')->with('success', 'Đề thi được tạo thành công!');
     }
 
     /**
@@ -56,18 +97,18 @@ class TestController extends Controller
     public function submit(Request $request, $id)
     {
         $userId = auth()->id();
-        $questions = EQuestion::where('id_test', $id)->get();
-        $score = 0;
+        $test = Test::find($id);
+        $questions = $test->questions;
         $numberQuestions = 0;
         $totalQuestions = $questions->count();
 
         foreach ($questions as $question) {
             $answerKey = 'answer_' . $question->id;
             if ($request->has($answerKey) && $request->input($answerKey) === $question->correct_answer) {
-                $score += 2;
                 $numberQuestions++;
             }
         }
+        $score = $numberQuestions * 2;
         DB::table('test_history')->insert([
             'id_user' => $userId,
             'id_test' => $id,
@@ -76,7 +117,7 @@ class TestController extends Controller
             'updated_at' => now(),
         ]);
 
-        return view('user.test.result', compact('score', 'numberQuestions', 'totalQuestions', 'id'));
+        return view('user.test.result', compact('numberQuestions', 'totalQuestions', 'id'));
     }
 
     public function history(){

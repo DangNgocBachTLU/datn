@@ -9,11 +9,11 @@ class Test extends Model
 {
     use HasFactory;
     protected $table = "tests";
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'level'];
 
     public function questions()
     {
-        return $this->hasMany(EQuestion::class, 'id_test', 'id'); 
+        return $this->belongsToMany(EQuestion::class, 'question_tests', 'id_test', 'id_question');
     }
 
     public function testHistories()

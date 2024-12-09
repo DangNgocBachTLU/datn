@@ -60,3 +60,4 @@ Route::delete('question/delete/{id}', [QuestionController::class, 'destroy'])->n
 
 Route::get('test/list/', [TestController::class,'index'])->name('admin.test.list');
 Route::get('test/create/', [TestController::class, 'create'])->name('admin.test.create');
+Route::post('test/store/', [TestController::class, 'store'])->name('admin.test.store');

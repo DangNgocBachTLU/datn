@@ -9,7 +9,7 @@
     <div  class="container">
         <div class="row" style="margin: 20px;">
             <div class="col-12">
-                <form action="{{-- route('admin.test.store') --}}" method="POST">
+                <form action="{{ route('admin.test.store') }}" method="POST">
                     @csrf
                     @method('POST')
                 
@@ -23,7 +23,7 @@
                                 <th><label for="level">Độ khó:</label></th>
                                 <td><select id="level" name="level" required>
                                     <option value=""></option>
-                                    <option value="Dề">Dễ</option>
+                                    <option value="Dễ">Dễ</option>
                                     <option value="Trung bình">Trung bình</option>
                                     <option value="Khó">Khó</option>
                                 </select></td>
@@ -32,7 +32,7 @@
                                 <td>
                                     <button type="submit" class="btn btn-success">Thêm</button>
                                     <a href="{{ route('admin.test.list') }}" class="btn btn-danger">Hủy</a>
-                                </td>                                  
+                                </td>
                             </tr>
                         </table>
                     </div>
