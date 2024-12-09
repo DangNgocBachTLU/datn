@@ -8,6 +8,7 @@ use App\Models\Test;
 use Illuminate\Support\Facades\DB;
 use App\Models\EQuestion;
 use App\Models\TestHistory;
+use Illuminate\Support\Facades\Route;
 
 class TestController extends Controller
 {
@@ -17,7 +18,12 @@ class TestController extends Controller
     public function index()
     {
         $test = Test::get();
-        return view('user.test.list', compact('test'));
+        if(Route::currentRouteName() == 'user.test.list'){
+            return view('user.test.list', compact('test'));
+        }
+        if(Route::currentRouteName() == 'admin.test.list'){
+            return view('admin.test.list', compact('test'));
+        }        
     }
 
     /**
@@ -25,7 +31,7 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.test.create');
     }
 
     /**

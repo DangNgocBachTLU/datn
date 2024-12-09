@@ -16,7 +16,7 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th><label for="name">Câu hỏi:</label></th>
+                                <th><label for="question">Câu hỏi:</label></th>
                                 <td><input type="text" id="question" name="question" required></td>
                             </tr>
                             <tr>

@@ -56,7 +56,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button type="submit" class="btn btn-success">Thêm</button>
+                                    <button type="submit" class="btn btn-success">Cập nhật</button>
                                     <a href="{{ route('admin.question.list') }}" class="btn btn-danger">Hủy</a>
                                 </td>                                  
                             </tr>

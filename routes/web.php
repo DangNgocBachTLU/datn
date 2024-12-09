@@ -56,3 +56,7 @@ Route::get('question/create/', [QuestionController::class, 'create'])->name('adm
 Route::post('question/store/', [QuestionController::class, 'store'])->name('admin.question.store');
 Route::get('question/edit/{id}/', [QuestionController::class, 'edit'])->name('admin.question.edit');
 Route::put('question/update/{id}', [QuestionController::class, 'update'])->name('admin.question.update');
+Route::delete('question/delete/{id}', [QuestionController::class, 'destroy'])->name('admin.question.delete');
+
+Route::get('test/list/', [TestController::class,'index'])->name('admin.test.list');
+Route::get('test/create/', [TestController::class, 'create'])->name('admin.test.create');

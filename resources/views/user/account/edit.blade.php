@@ -17,11 +17,11 @@
                     <table class="table">
                         <tr>
                             <th><label for="name">Tên:</label></th>
-                            <td><input type="text" id="name" name="name" value="{{ $user->name }}" required></td>
+                            <td><input type="text" id="name" name="name" value="{{ $user->name }}"></td>
                         </tr>
                         <tr>
                             <th><label for="phone">Số điện thoại:</label></th>
-                            <td><input type="text" id="phone" name="phone" value="{{ $user->phone }}" required></td>
+                            <td><input type="text" id="phone" name="phone" value="{{ $user->phone }}"></td>
                         </tr>
                         <tr>
                             <th><label for="email">Email*:</label></th>

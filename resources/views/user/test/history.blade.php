@@ -10,22 +10,26 @@
                 <div class="card-header">
                     <h2>Lịch sử làm bài</h2>
                 </div>
-                <div class="table-responsive">
-                    <table class="table">
-                        <tr>
-                            <th>Đề thi</th>
-                            <th>Điểm</th>
-                            <th>Ngày làm bài</th>
-                        </tr>
-                        @foreach($history as $item)
+                @if($history->isEmpty())
+                    <p>Không có lịch sử làm bài.</p>
+                @else
+                    <div class="table-responsive">
+                        <table class="table">
                             <tr>
-                                <td>{{$item->test->name}}</td>
-                                <td>{{$item->score}}</td>
-                                <td>{{$item->created_at->format('d/m/Y')}}</td>
+                                <th>Đề thi</th>
+                                <th>Điểm</th>
+                                <th>Ngày làm bài</th>
                             </tr>
-                        @endforeach
-                    </table>
-                </div>
+                            @foreach($history as $item)
+                                <tr>
+                                    <td>{{$item->test->name}}</td>
+                                    <td>{{$item->score}}</td>
+                                    <td>{{$item->created_at->format('d/m/Y')}}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

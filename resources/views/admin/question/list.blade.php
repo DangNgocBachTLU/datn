@@ -34,7 +34,13 @@
                                     <a href="{{ route('admin.question.edit', $item->id) }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
                                 </td>
                                 <td>
-                                    <a href="{{-- route('question.delete', $item->id) --}}" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
+                                    <form action="{{ route('admin.question.delete', $item->id) }}" method="POST" onsubmit="return confirmDelete()">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa-solid fa-delete-left"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

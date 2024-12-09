@@ -37,7 +37,7 @@
                     </a>
                     <ul class="collapse list-unstyled ps-3" id="submenu-exam-management">
                         <li class="nav-item"><a class="nav-link text-white" href="{{ route('admin.question.list') }}">Danh sách câu hỏi</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#">Danh sách đề thi</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('admin.test.list') }}">Danh sách đề thi</a></li>
                     </ul>
                 </li>
             </ul>

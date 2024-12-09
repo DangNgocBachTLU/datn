@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
+            $table->enum('level', ['Dễ', 'Trung bình', 'Khó']);
             $table->timestamps();
         });
     }

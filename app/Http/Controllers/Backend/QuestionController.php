@@ -66,6 +66,7 @@ class QuestionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        EQuestion::destroy($id);
+        return redirect()->route('admin.question.list')->with('success', 'Xóa thành công');
     }
 }
