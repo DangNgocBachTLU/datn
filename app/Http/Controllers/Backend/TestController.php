@@ -61,7 +61,6 @@ class TestController extends Controller
                 break;
         }
     
-        // Kết hợp các câu hỏi theo độ khó
         $allQuestions = collect();
         if (isset($easyQuestions)) {
             $allQuestions = $allQuestions->merge($easyQuestions);

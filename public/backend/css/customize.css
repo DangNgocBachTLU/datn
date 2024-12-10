@@ -1,3 +1,4 @@
+/*header*/
 .form-group {
     display: flex;
     flex-direction: column;
@@ -23,6 +24,23 @@
     color: #ffdd57 !important;
 }
 
+/*footer*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.shadow-footer {
+    box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*admin*/
 #wrapper {
     height: 100vh;
     display: flex;

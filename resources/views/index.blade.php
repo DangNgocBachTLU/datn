@@ -25,7 +25,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('admin.user.list') }}" data-bs-target="#submenu-user-management" aria-expanded="false">
                         <i class="fa-solid fa-user me-2"></i>
-                        <span class="nav-label">Danh sách người dùng</span>
+                        <span class="nav-label">Quản lý người dùng</span>
                     </a>
                 </li>
         
