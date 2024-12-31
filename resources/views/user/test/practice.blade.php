@@ -54,7 +54,13 @@
                         <td>
                             <div class="card card-body mb-2 position-fixed text-center">
                                 <p>Thời gian còn lại</p>
-                                <p id="countdown-timer"></p>
+                                <div class="circle">
+                                    <svg>
+                                        <circle cx="70" cy="70" r="40"></circle>
+                                        <circle cx="70" cy="70" r="40" id="time"></circle>
+                                    </svg>
+                                    <p id="countdown-timer"></p>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Nộp bài</button>
                             </div>
                         </td>

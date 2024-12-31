@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <h2>Thông tin cá nhân</h2>
                 </div>
-                <div class="table-responsive">
+                <div class="card-body mt-5">
                     <table class="table">
                         <tr>
                             <th>Tên</th>

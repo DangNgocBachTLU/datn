@@ -19,7 +19,7 @@
                                 <th>Tên đề thi</th>
                                 <th>Độ khó</th>
                             </tr>
-                            @foreach($test as $item)
+                            @foreach($test->reverse() as $item)
                                 <tr>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->level}}</td>

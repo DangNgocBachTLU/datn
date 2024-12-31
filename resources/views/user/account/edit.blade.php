@@ -13,7 +13,7 @@
                 @csrf
                 @method('PUT')
             
-                <div class="table-responsive">
+                <div class="card-body mt-5">
                     <table class="table">
                         <tr>
                             <th><label for="name">Tên:</label></th>
