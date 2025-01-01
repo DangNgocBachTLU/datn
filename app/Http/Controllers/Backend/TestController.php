@@ -10,6 +10,7 @@ use App\Models\EQuestion;
 use App\Models\TestHistory;
 use Illuminate\Support\Facades\Route;
 use App\Models\QuestionTest;
+use App\Models\DetailedHistory;
 
 class TestController extends Controller
 {
@@ -101,22 +102,32 @@ class TestController extends Controller
         $numberQuestions = 0;
         $totalQuestions = $questions->count();
 
-        foreach ($questions as $question) {
-            $answerKey = 'answer_' . $question->id;
-            if ($request->has($answerKey) && $request->input($answerKey) === $question->correct_answer) {
-                $numberQuestions++;
-            }
-        }
-        $score = $numberQuestions * 2;
-        DB::table('test_history')->insert([
+        $historyId = DB::table('test_history')->insertGetId([
             'id_user' => $userId,
             'id_test' => $id,
-            'score' => $score,
+            'score' => 0,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        return view('user.test.result', compact('numberQuestions', 'totalQuestions', 'id'));
+        foreach ($questions as $question) {
+            $answerKey = 'answer_' . $question->id;
+            $selectedAnswer = $request->input($answerKey);
+            DetailedHistory::create([
+                'id_history' => $historyId,
+                'id_question' => $question->id,
+                'selected_answer' => $selectedAnswer,
+            ]);
+            if ($request->has($answerKey) && $selectedAnswer == $question->correct_answer) {
+                $numberQuestions++;
+            }
+        }
+        $score = $numberQuestions * 2;
+        DB::table('test_history')->where('id', $historyId)->update([
+            'score' => $score,
+        ]);
+
+        return view('user.test.result', compact('numberQuestions', 'totalQuestions', 'id', 'historyId'));
     }
 
     public function history(){

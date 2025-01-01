@@ -20,12 +20,14 @@
                                     <th>Đề thi</th>
                                     <th>Điểm</th>
                                     <th>Ngày làm bài</th>
+                                    <th></th>
                                 </tr>
-                                @foreach($history as $item)
+                                @foreach($history->reverse() as $item)
                                     <tr>
                                         <td>{{$item->test->name}}</td>
                                         <td>{{$item->score}}</td>
                                         <td>{{$item->created_at->format('d/m/Y')}}</td>
+                                        <td><a href="{{ Route('user.history.detail', $item->id) }}" class="info-button">Chi tiết</a></td>
                                     </tr>
                                 @endforeach
                             </table>

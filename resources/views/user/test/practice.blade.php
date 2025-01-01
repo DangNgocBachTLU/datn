@@ -10,7 +10,7 @@
                 <h2>{{ $test->name }}</h2>
             </div>
             <div class="table-responsive">
-                <form action="{{ route('user.test.submit', ['id'=> $test->id]) }}" method="POST">
+                <form id="quiz-form" action="{{ route('user.test.submit', ['id'=> $test->id]) }}" method="POST">
                     @csrf
                     <table class="table">
                         <td class="col-md-9">

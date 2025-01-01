@@ -19,6 +19,7 @@
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
+            <h3>Đăng nhập hệ thống quản trị</h3>
             <form method="POST" class="m-t" role="form" action=" {{ route('admin.login') }} ">
                 @csrf
 

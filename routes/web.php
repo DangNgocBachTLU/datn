@@ -7,6 +7,7 @@ use \App\Http\Controllers\Backend\UserController;
 use \App\Http\Controllers\Backend\TestController;
 use \App\Http\Controllers\Backend\AdminController;
 use \App\Http\Controllers\Backend\QuestionController;
+use \App\Http\Controllers\Backend\HistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,14 +36,16 @@ Route::post('register/', [AuthController::class, 'register'])->name('user.auth.r
 Route::post('logout/', [AuthController::class, 'logout'])->name('user.auth.logout');
 
 Route::get('profile/', [UserController::class, 'index'])->name('user.account.profile');
-Route::get('edit/{id}', [UserController::class, 'edit'])->name('user.account.edit');
+Route::get('edit/{id}/', [UserController::class, 'edit'])->name('user.account.edit');
 Route::put('update/', [UserController::class, 'update'])->name('user.account.update');
 
 Route::get('list/', [TestController::class, 'index'])->name('user.test.list');
 Route::get('practice/{id}/', [TestController::class, 'show'])->name('user.test.practice');
-Route::post('submit/{id}', [TestController::class, 'submit'])->name('user.test.submit');
+Route::post('submit/{id}/', [TestController::class, 'submit'])->name('user.test.submit');
 Route::get('history/', [TestController::class, 'history'])->name('user.test.history');
 Route::get('search/', [TestController::class, 'search'])->name('user.test.search');
+
+Route::get('detail/{id}/', [HistoryController::class, 'show'])->name('user.history.detail');
 
 //Admin
 Route::get('admin/', [AdminController::class, 'index'])->name('admin.index');
@@ -55,8 +58,8 @@ Route::get('question/list/', [QuestionController::class,'index'])->name('admin.q
 Route::get('question/create/', [QuestionController::class, 'create'])->name('admin.question.create');
 Route::post('question/store/', [QuestionController::class, 'store'])->name('admin.question.store');
 Route::get('question/edit/{id}/', [QuestionController::class, 'edit'])->name('admin.question.edit');
-Route::put('question/update/{id}', [QuestionController::class, 'update'])->name('admin.question.update');
-Route::delete('question/delete/{id}', [QuestionController::class, 'destroy'])->name('admin.question.delete');
+Route::put('question/update/{id}/', [QuestionController::class, 'update'])->name('admin.question.update');
+Route::delete('question/delete/{id}/', [QuestionController::class, 'destroy'])->name('admin.question.delete');
 
 Route::get('test/list/', [TestController::class,'index'])->name('admin.test.list');
 Route::get('test/create/', [TestController::class, 'create'])->name('admin.test.create');

@@ -40,11 +40,6 @@ footer {
     box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.1);
 }
 
-/*user*/
-.navbar-brand {
-    font-weight: 500;
-}
-
 /*admin*/
 #wrapper {
     height: 100vh;
@@ -93,6 +88,24 @@ footer {
 
 .custom-shadow {
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.notice {
+    color: red;
+    font-size: small;
+}
+
+/*user*/
+.navbar-brand {
+    font-weight: 500;
+}
+
+.info-button {
+    text-decoration: none;
+}
+
+.info-button:hover {
+    color: crimson;
 }
 
 /*countdown-timer circle*/

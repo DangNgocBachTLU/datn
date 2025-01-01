@@ -3,3 +3,4 @@
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('backend/js/countdown-timer.js') }}"></script>
 <script src="{{ asset('backend/js/confirm-delete.js') }}"></script>
+<script src="{{ asset('backend/js/notice.js') }}"></script>

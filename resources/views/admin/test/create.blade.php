@@ -29,6 +29,10 @@
                                 </select></td>
                             </tr>
                             <tr>
+                                <th>Mô tả</th>
+                                <td><p class="notice"></p></td>
+                            </tr>
+                            <tr>
                                 <td>
                                     <button type="submit" class="btn btn-success">Thêm</button>
                                     <a href="{{ route('admin.test.list') }}" class="btn btn-danger">Hủy</a>
