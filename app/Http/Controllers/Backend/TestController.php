@@ -139,7 +139,7 @@ class TestController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $tests = Test::where('name', 'like', '%'.$search.'%')->get();
+        $tests = Test::where('name', 'like', '%'.$search)->get();
         return view('user.test.search', compact('tests'));
     }
 

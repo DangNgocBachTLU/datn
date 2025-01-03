@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
                 <form class="d-flex" role="search" method="GET" action="{{ route('user.test.search') }}">
-                    <input class="form-control me-2" type="search" name="search" placeholder="Tìm kiếm" aria-label="Search">
+                    <input class="form-control me-2" type="search" name="search" placeholder="Tìm kiếm" aria-label="Search" value="{{ request('search') }}">
                     <button class="btn btn-outline-success w-50" type="submit">Tìm kiếm</button>
                 </form>
     
