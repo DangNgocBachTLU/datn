@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Test;
+use App\Models\TestHistory;
 
 class AdminController extends Controller
 {
@@ -29,7 +32,10 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-        return view('admin.dashboard');
+        $userCount = User::count();
+        $testCount = Test::count();
+        $attemptCount = TestHistory::count();
+        return view('admin.dashboard', compact('userCount', 'testCount', 'attemptCount'));
     }
 
     /**
